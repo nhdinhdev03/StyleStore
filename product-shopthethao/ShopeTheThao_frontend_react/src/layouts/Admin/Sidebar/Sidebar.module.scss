@@ -1,0 +1,196 @@
+// Các biến màu
+$primary-color: #1890ff; // Main blue color
+$secondary-color: #cce7ff; // Light blue background
+$hover-color: #40a9ff; // Hover blue color
+$text-color: #001529; // Dark text color
+$light-text: #ffffff; // White text
+$border-radius: 8px; // Bo tròn góc
+$divider-color: rgba(0, 0, 0, 0.06); // Màu của divider
+
+// Sidebar container
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+// Sidebar header
+.sidebarHeader {
+  padding: 16px 24px;
+  text-align: center;
+  border-bottom: 1px solid $divider-color;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: white;
+}
+
+.sidebarTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sidebarSubtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+// Menu divider
+.menuDivider {
+  margin: 8px 0;
+  border-color: $divider-color;
+}
+
+// Tổng quát cho sidebar menu
+.sidebar-menu {
+  flex: 1;
+  background-color: #ffffff; // Màu nền sidebar
+  border-right: none;
+  padding: 12px 8px;
+
+  :global {
+    // Menu section title
+    .menu-section-title {
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: $primary-color;
+    }
+
+    // Menu items
+    .ant-menu-item {
+      margin: 4px 0;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: $text-color;
+      border-radius: $border-radius;
+      transition: all 0.3s ease;
+      height: auto;
+      line-height: 1.5;
+
+      &:hover {
+        background-color: rgba($hover-color, 0.1) !important;
+        color: $primary-color !important;
+
+        .anticon, .menu-icon, .submenu-icon {
+          color: $primary-color !important;
+        }
+      }
+
+      .anticon, .menu-icon, .submenu-icon {
+        margin-right: 10px;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+    }
+
+    // Mục được chọn
+    .ant-menu-item-selected {
+      background-color: $secondary-color !important;
+      color: $primary-color !important;
+      font-weight: 600;
+
+      &::after {
+        border-right: 3px solid $primary-color;
+      }
+
+      .anticon, .menu-icon, .submenu-icon {
+        color: $primary-color !important;
+      }
+    }
+
+    // Submenu
+    .ant-menu-submenu {
+      &.ant-menu-submenu-open {
+        .ant-menu-submenu-title {
+          color: $primary-color;
+          font-weight: 600;
+
+          .menu-icon {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
+    // Tiêu đề submenu
+    .ant-menu-submenu-title {
+      padding: 12px 16px;
+      font-weight: 500;
+      color: $text-color;
+      border-radius: $border-radius;
+      height: auto;
+      line-height: 1.5;
+
+      &:hover {
+        background-color: rgba($hover-color, 0.1) !important;
+        color: $primary-color !important;
+
+        .menu-icon {
+          color: $primary-color !important;
+        }
+      }
+    }
+
+    // Submenu content
+    .ant-menu-sub {
+      background-color: #fafafa;
+      border-radius: $border-radius;
+      padding: 4px;
+
+      .ant-menu-item {
+        padding: 10px 16px 10px 40px;
+        font-size: 14px;
+        margin: 2px 0;
+        height: auto;
+        line-height: 1.5;
+        
+        &::after {
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+
+    // Icons
+    .menu-icon {
+      font-size: 16px;
+      margin-right: 12px;
+      vertical-align: middle;
+      width: 20px;
+      text-align: center;
+      transition: all 0.3s;
+
+      &.dashboard-icon { color: #4CAF50; }
+      &.product-icon { color: #00BCD4; }
+      &.inventory-icon { color: #9C27B0; }
+      &.sales-icon { color: #FF9800; }
+      &.user-icon { color: #3F51B5; }
+      &.report-icon { color: #607D8B; }
+    }
+
+    .submenu-icon {
+      font-size: 14px;
+      margin-right: 10px;
+      opacity: 0.85;
+      width: 18px;
+      text-align: center;
+    }
+
+    .menu-label {
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .menu-item-label {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}

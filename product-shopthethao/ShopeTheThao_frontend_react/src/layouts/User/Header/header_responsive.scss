@@ -1,0 +1,774 @@
+// Media Queries
+// @media (min-width: 1400px) {
+//   :root {
+//     --container-width: 100%;
+//   }
+// }
+
+@media (max-width: 1200px) {
+  :root {
+    --container-width: 100%;
+  }
+}
+
+// Desktop/Laptop breakpoint
+@media (max-width: 1023px) {
+  .header {
+    .top-bar {
+      .brand-desc {
+        display: none;
+      }
+    }
+
+    .main-nav {
+      .desktop-nav {
+        display: none;
+      }
+
+      .user-actions {
+        .mobile-menu-toggle {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .search-bar {
+    .search-suggestions {
+      .suggested-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  .mega-menu-categories {
+    grid-template-columns: repeat(2, 1fr);
+
+    .featured-column {
+      grid-column: auto;
+      grid-row: 1;
+
+      .featured-image {
+        height: 200px;
+      }
+    }
+  }
+
+  // --- START: NEW Mobile Menu Font Sizes ---
+  // Moved from header.scss - Base sizes for tablet/mobile range
+  .mobile-menu {
+    --menu-font-base: var(--mobile-font-size-base, 15px);
+    --menu-font-sm: var(--mobile-font-size-sm, 13px);
+    --menu-font-xs: var(--mobile-font-size-xs, 11px);
+    --menu-font-xxs: 10px; // Extra small for tags/badges
+
+    .mobile-menu__header { // Renamed header block
+      .nav-header {
+        h3 { font-size: 1rem; } // 16px title
+        .brand-logo h2 { font-size: 1.3rem; }
+        .back-button svg, .close-button svg { font-size: 1.2rem; }
+      }
+    }
+
+    .user-profile-bar {
+      .user-info {
+        .name { font-size: 1rem; } // 16px
+        .welcome { font-size: var(--menu-font-sm); } // 13px
+      }
+      .profile-action { font-size: var(--menu-font-sm); } // 13px
+      .guest-user .auth-actions {
+        .login-btn, .register-btn { font-size: 0.9rem; } // ~14.4px
+      }
+    }
+
+    .mobile-nav-wrapper { // Renamed content wrapper
+      .section-title {
+        font-size: var(--menu-font-xs); // 11px
+        letter-spacing: 0.8px;
+      }
+
+      .menu-item {
+        .item-button, .item-link {
+          .item-name { font-size: var(--menu-font-base); } // 15px standard
+          .item-tag { font-size: var(--menu-font-xxs); } // 10px tag
+          .icon-right { font-size: 1rem; } // 16px arrow
+        }
+      }
+
+      .featured-section .featured-overlay {
+        h5 { font-size: 1.05rem; } // ~17px
+        p { font-size: var(--menu-font-sm); } // 13px
+        .featured-btn { font-size: var(--menu-font-sm); } // 13px
+      }
+
+      .quick-links-section .quick-links .quick-link {
+        font-size: var(--menu-font-xs); // 11px
+      }
+
+      .outlet-section .outlet-card {
+        h4 { font-size: 1.1rem; } // ~17.6px
+        p { font-size: 0.9rem; } // ~14.4px
+        .outlet-button { font-size: 0.9rem; } // ~14.4px
+      }
+
+      .quick-actions-section .quick-actions .action-tile {
+        .action-icon { font-size: 1.4rem; } // ~22px
+        .action-name { font-size: var(--menu-font-xs); } // 11px
+        .count-badge { font-size: var(--menu-font-xxs); width: 16px; height: 16px; } // 10px badge
+      }
+    }
+
+    .mobile-menu-footer { // Renamed footer block
+      .social-links a, .contact-info a {
+        font-size: var(--menu-font-sm); // 13px
+        svg { font-size: 1rem; } // 16px icons
+      }
+    }
+  }
+  // --- END: NEW Mobile Menu Font Sizes ---
+}
+
+// Tablet breakpoint
+@media (max-width: 768px) {
+  .header {
+    .top-bar {
+      display: none;
+    }
+
+    .main-nav {
+      height: var(--header-mobile-height);
+    }
+  }
+
+  .mega-menu-categories {
+    grid-template-columns: 1fr;
+
+    .featured-column {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  ._header_top_svty4_0 {
+    display: none;
+  }
+}
+
+// Mobile breakpoint
+@media (max-width: 480px) {
+  .header {
+    .main-nav {
+      .logo {
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .user-actions {
+        gap: 0;
+
+        .action-icon:not(.mobile-menu-toggle) {
+          display: none;
+        }
+      }
+
+      .mobile-menu {
+        width: 100%;
+      }
+    }
+  }
+
+  .search-bar {
+    .search-suggestions {
+      .suggested-products {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .mobile-menu {
+    width: 100%;
+    max-width: 100%;
+    
+    .mobile-menu-header {
+      padding: 0 2px;
+      height: 56px;
+
+      .menu-logo h2 {
+        font-size: 1.1rem;
+      }
+
+      .menu-brand h2 {
+        font-size: 1.3rem;
+      }
+      
+      .submenu-header h3 {
+        font-size: 0.9rem;
+      }
+
+      .close-menu,
+      .back-button {
+        width: 38px;
+        height: 38px;
+
+        svg {
+          font-size: 1.1rem;
+        }
+      }
+
+      .back-button, 
+      .close-button {
+        &:active {
+          background-color: rgba(0, 0, 0, 0.1); /* Updated to use black */
+        }
+      }
+    }
+
+    .mobile-menu-header {
+      height: 60px;
+      padding: 0 16px;
+
+      .nav-header {
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        .back-button, 
+        .close-button {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background: #f8f8f8;
+          
+          svg {
+            font-size: 20px;
+          }
+
+          &:active {
+            background: #f0f0f0;
+            transform: scale(0.96);
+          }
+        }
+      }
+    }
+
+    .user-profile-bar {
+      margin: 0 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f8f8f8;
+
+      .avatar {
+        width: 48px;
+        height: 48px;
+      }
+
+      .user-info {
+        .name {
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 4px;
+        }
+
+        .welcome {
+          font-size: 13px;
+          color: #666;
+        }
+      }
+    }
+
+    .mobile-nav .menu-content {
+      padding: 12px;
+      
+      .main-menu li .menu-item,
+      .submenu-groups li .group-button,
+      .group-items li .menu-link {
+        padding: 12px;
+        font-size: 0.875rem;
+        
+        svg {
+          font-size: 1rem;
+        }
+      }
+      
+      .mobile-featured-image {
+        .mobile-featured-content {
+          padding: 16px;
+          
+          h4 {
+            font-size: 0.9rem;
+          }
+          
+          p {
+            font-size: 0.8rem;
+          }
+          
+          .featured-link {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .menu-content {
+      padding: 16px;
+      
+      .section-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .menu-item {
+        margin-bottom: 8px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .item-button {
+          padding: 16px;
+          border-radius: 12px;
+          background: #f8f8f8;
+          
+          .item-name {
+            font-size: 15px;
+            font-weight: 500;
+          }
+
+          &:active {
+            background: #f0f0f0;
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
+
+    .mobile-menu-footer {
+      padding: 12px;
+
+      .user-actions-mobile {
+        gap: 8px;
+
+        .action-btn {
+          padding: 10px;
+
+          svg {
+            font-size: 1.1rem;
+          }
+
+          span {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .mobile-auth-buttons {
+        gap: 8px;
+
+        .mobile-btn {
+          padding: 10px;
+          font-size: 0.875rem;
+
+          svg {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .social-links a {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  // --- Adjust NEW Mobile Menu Font Sizes for smaller screens ---
+  .mobile-menu {
+    --menu-font-base: 14px; // Slightly smaller base for small mobile
+    --menu-font-sm: 12px;
+    --menu-font-xs: 11px; // Keep smallest title size reasonable
+    --menu-font-xxs: 10px;
+
+    .mobile-menu__header .nav-header { // Use new BEM class
+        h3 { font-size: 0.95rem; } // ~15px
+        .brand-logo h2 { font-size: 1.2rem; }
+    }
+
+    .user-profile-bar {
+        .user-info {
+           .name { font-size: 0.95rem; } // ~15px
+           .welcome { font-size: var(--menu-font-sm); } // 12px
+        }
+        .guest-user .auth-actions {
+            .login-btn, .register-btn { font-size: 0.85rem; } // ~13.6px
+        }
+    }
+
+    .mobile-nav-wrapper { // Use new BEM class
+       .menu-item {
+          .item-button, .item-link {
+             .item-name { font-size: var(--menu-font-base); } // 14px item
+          }
+       }
+        .featured-section .featured-overlay {
+           h5 { font-size: 1rem; } // 16px
+           p { font-size: var(--menu-font-sm); } // 12px
+           .featured-btn { font-size: var(--menu-font-sm); } // 12px
+        }
+         .quick-links-section .quick-links .quick-link {
+            font-size: var(--menu-font-xs); // 11px
+         }
+          .outlet-section .outlet-card {
+             h4 { font-size: 1rem; } // 16px
+             p { font-size: 0.85rem; } // ~13.6px
+             .outlet-button { font-size: 0.85rem; } // ~13.6px
+          }
+           .quick-actions-section .quick-actions .action-tile {
+               .action-icon { font-size: 1.3rem; } // ~21px
+               .action-name { font-size: var(--menu-font-xs); } // 11px
+           }
+       }
+        .mobile-menu-footer { // Use new BEM class
+           .social-links a, .contact-info a {
+              font-size: var(--menu-font-sm); // 12px
+           }
+        }
+    }
+  }
+
+
+// Small mobile devices
+@media (max-width: 360px) {
+   .header .mobile-menu { // Target mobile menu specifically
+      // --- Further fine-tune sizes for very small screens ---
+       --menu-font-base: 13px; // Even smaller base
+       --menu-font-sm: 11px;
+       --menu-font-xs: 10px;
+       --menu-font-xxs: 9px;
+
+        .mobile-menu__header .nav-header {
+             h3 { font-size: 0.9rem; } // ~14.4px
+             .brand-logo h2 { font-size: 1.1rem; }
+        }
+        .user-profile-bar {
+            .user-info {
+               .name { font-size: 0.9rem; } // ~14.4px
+               .welcome { font-size: var(--menu-font-sm); } // 11px
+            }
+            .guest-user .auth-actions {
+                .login-btn, .register-btn { font-size: 0.8rem; } // ~12.8px
+            }
+        }
+         .mobile-nav-wrapper {
+             .section-title { font-size: var(--menu-font-xs); } // 10px
+             .menu-item {
+                .item-button, .item-link {
+                   .item-name { font-size: var(--menu-font-base); } // 13px item
+                   .item-tag { font-size: var(--menu-font-xxs); } // 9px tag
+                }
+             }
+              .featured-section .featured-overlay {
+                 h5 { font-size: 0.95rem; } // ~15px
+                 p { font-size: var(--menu-font-sm); } // 11px
+                 .featured-btn { font-size: var(--menu-font-sm); } // 11px
+              }
+               .quick-links-section .quick-links .quick-link {
+                  font-size: var(--menu-font-xs); // 10px
+               }
+               .outlet-section .outlet-card {
+                  h4 { font-size: 0.95rem; } // ~15px
+                  p { font-size: 0.8rem; } // ~12.8px
+                  .outlet-button { font-size: 0.8rem; } // ~12.8px
+               }
+                .quick-actions-section .quick-actions .action-tile {
+                    .action-icon { font-size: 1.2rem; } // ~19px
+                    .action-name { font-size: var(--menu-font-xs); } // 10px
+                    .count-badge { font-size: 9px; width: 15px; height: 15px; }
+                }
+         }
+          .mobile-menu-footer {
+             .social-links a, .contact-info a {
+                font-size: var(--menu-font-sm); // 11px
+             }
+          }
+   }
+}
+
+// Safe area insets for notched devices
+@supports (padding-top: env(safe-area-inset-top)) {
+  .mobile-menu .mobile-menu-header {
+    padding-top: env(safe-area-inset-top);
+    height: calc(48px + env(safe-area-inset-top));
+  }
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-menu .mobile-menu-footer {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+// Touch device optimizations
+@media (pointer: coarse) {
+  .mobile-nav {
+    .submenu-groups li .group-button,
+    .main-menu li .menu-item,
+    .mobile-quick-links .mobile-quick-link {
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: inherit;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      &:active::after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        transition: 0s;
+      }
+    }
+  }
+
+  .mobile-menu {
+    .mobile-nav .menu-content {
+      .main-menu li .menu-item,
+      .submenu-groups li .group-button,
+      .group-items li .menu-link,
+      .mobile-quick-links .mobile-quick-link {
+        position: relative;
+        overflow: hidden;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.08);
+          border-radius: inherit;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+          transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        &:active::after {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+          transition: 0s;
+        }
+      }
+    }
+    
+    .mobile-menu-footer {
+      .user-actions-mobile .action-btn,
+      .mobile-auth-buttons .mobile-btn,
+      .social-links a {
+        position: relative;
+        overflow: hidden;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.05);
+          border-radius: inherit;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+          transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        &:active::after {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+          transition: 0s;
+        }
+      }
+    }
+  }
+}
+
+// Container responsive widths
+@media (min-width: var(--breakpoint-4k)) {
+  .main-nav .container {
+    max-width: 2000px;
+    padding: 0 40px;
+  }
+
+  .nav-wrapper {
+    padding: 20px 0;
+  }
+
+  .logo h1 {
+    font-size: 2.5rem;
+  }
+
+  .action-icon {
+    width: 48px;
+    height: 48px;
+
+    svg {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: var(--breakpoint-laptop)) {
+  .main-nav .container {
+    max-width: 900px;
+  }
+
+  .nav-wrapper {
+    padding: 12px 0;
+  }
+
+  .logo h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: var(--breakpoint-tablet)) {
+  .main-nav .container {
+    padding: 0 15px;
+  }
+
+  .nav-wrapper {
+    padding: 10px 0;
+  }
+
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: var(--breakpoint-mobile-l)) {
+  .main-nav .container {
+    padding: 0 12px;
+  }
+
+  .nav-wrapper {
+    padding: 8px 0;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .action-icon {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: var(--breakpoint-mobile-m)) {
+  .main-nav .container {
+    padding: 0 10px;
+  }
+}
+
+/* Animation optimizations for smooth performance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu .menu-content > ul > li,
+.mobile-menu .mobile-featured-image,
+.mobile-menu .mobile-quick-links,
+.mobile-menu .mobile-auth-buttons {
+  animation: fadeInUp 0.3s ease forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.05s);
+}
+
+// Enhance touch feedback
+@media (pointer: coarse) {
+  .mobile-menu {
+    .menu-item,
+    .action-item,
+    .quick-link {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 60%);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      &:active::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        transition: opacity 0s, transform 0s;
+      }
+    }
+  }
+}
+
+// Safe area insets for modern devices
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-menu {
+    .mobile-menu-footer {
+      padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+// Add smooth scroll behavior
+.mobile-menu {
+  .menu-content {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.1);
+      border-radius: 4px;
+    }
+  }
+}

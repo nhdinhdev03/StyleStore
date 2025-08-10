@@ -1,0 +1,402 @@
+// Breakpoints
+$breakpoint-4k: 2560px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile-l: 425px;
+$breakpoint-mobile-m: 375px;
+
+// Font sizes
+$font-xs: 12px;
+$font-sm: 13px;
+$font-base: 14px;
+$font-md: 16px;
+$font-lg: 18px;
+$font-xl: 20px;
+$font-xxl: 24px;
+
+// Responsive mixins
+@mixin responsive($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Typography mixins
+@mixin heading-xl {
+  font-size: $font-xxl;
+  font-weight: 700;
+  
+  @include responsive($breakpoint-laptop) {
+    font-size: $font-xl;
+  }
+  
+  @include responsive($breakpoint-tablet) {
+    font-size: $font-lg;
+  }
+  
+  @include responsive($breakpoint-mobile-l) {
+    font-size: $font-md;
+  }
+}
+
+@mixin heading-md {
+  font-size: $font-lg;
+  font-weight: 600;
+  
+  @include responsive($breakpoint-tablet) {
+    font-size: $font-md;
+  }
+  
+  @include responsive($breakpoint-mobile-l) {
+    font-size: $font-base;
+  }
+}
+
+// Component styles
+.categories-page {
+  padding: 20px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  
+  @include responsive($breakpoint-mobile-l) {
+    padding: 10px;
+  }
+  
+  .content-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    
+    @include responsive($breakpoint-mobile-l) {
+      padding: 16px;
+    }
+  }
+  
+  .page-title {
+    @include heading-xl;
+    margin-bottom: 16px;
+    color: #111827;
+    border-left: 4px solid #1677ff;
+    padding-left: 12px;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header-actions {
+    margin-bottom: 20px;
+    
+    .search-input {
+      height: 40px;
+      border-radius: 6px;
+      
+      .ant-input {
+        font-size: $font-base;
+      }
+      
+      .ant-input-prefix {
+        color: #1677ff;
+        margin-right: 8px;
+      }
+      
+      &:hover, &:focus {
+        border-color: #1677ff;
+        box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+      }
+
+      @include responsive($breakpoint-mobile-l) {
+        margin-bottom: 10px;
+      }
+    }
+    
+    .add-button-container {
+      display: flex;
+      justify-content: flex-end;
+      
+      @include responsive($breakpoint-mobile-l) {
+        justify-content: center;
+      }
+    }
+  }
+
+  
+  
+  .add-btn {
+
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+    padding: 0 20px;
+    font-weight: 500;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    @include responsive($breakpoint-mobile-l) {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      font-size: $font-base;
+    }
+  }
+}
+.ant-table-thead > tr > th {
+  background-color: #f0f5ff;
+  color: #1677ff;
+  font-weight: 600;
+  border-right: 1px solid #f0f0f0;
+  
+  &:last-child {
+    border-right: none;
+  }
+}
+
+
+// Maintaining legacy styles from the original file
+.ellipsis-text {
+  display: inline-block;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}
+
+// ✅ Đảm bảo bảng không bị tràn trên mobile
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border-inline-start: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  overflow: auto hidden;
+  
+  .ant-table-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .ant-table-thead > tr > th {
+    background-color: #f0f5ff;
+    color: #1677ff;
+    font-weight: 600;
+    border-right: 1px solid #f0f0f0;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    // Custom column header styles
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #1677ff;
+      font-weight: 600;
+    }
+  }
+  
+  .ant-table-tbody > tr > td {
+    border-right: 1px solid #f0f0f0;
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+  
+  @include responsive($breakpoint-tablet) {
+    font-size: $font-sm;
+    
+    .ant-table {
+      font-size: $font-sm;
+      min-width: 600px; // Ensure table doesn't shrink too much
+    }
+  }
+  
+  @include responsive($breakpoint-mobile-l) {
+    .ant-table-cell {
+      padding: 8px 4px;
+    }
+    
+    .ant-btn {
+      padding: 4px 8px;
+      font-size: $font-xs;
+    }
+  }
+}
+
+// ✅ Điều chỉnh hiển thị cột trên màn hình nhỏ
+@media screen and (max-width: 768px) {
+  .table-container {
+    width: 100%;
+  }
+
+  .ant-table {
+    min-width: 600px; // Đảm bảo không bị co bảng quá mức
+  }
+
+  // 🔹 Thu nhỏ khoảng cách cho nút và chữ trên mobile
+  .header-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  // 🔹 Điều chỉnh kích thước avatar & biểu tượng trên mobile
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-icons {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+// Modal styles (maintaining from original file)
+.custom-modal .ant-modal-content {
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.custom-modal .ant-modal-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+}
+
+.custom-modal .ant-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.custom-modal .ant-form-item-label > label {
+  font-weight: 500;
+  color: #262626;
+}
+
+.custom-modal .ant-input-affix-wrapper,
+.custom-modal .ant-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+}
+
+.custom-modal .ant-input-affix-wrapper:hover,
+.custom-modal .ant-input:hover {
+  border-color: #4096ff;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.modal-footer .ant-btn {
+  height: 38px;
+  padding: 0 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.reset-button {
+  color: #595959;
+  background: #f5f5f5;
+  border: 1px solid #d9d9d9;
+}
+
+.reset-button:hover {
+  color: #262626;
+  background: #e8e8e8;
+  border-color: #d9d9d9;
+}
+
+.submit-button {
+  background: #1890ff;
+}
+
+.submit-button:hover {
+  background: #40a9ff;
+}
+
+/* Specific Responsive Breakpoints */
+@media (max-width: 1600px) {
+  .categories-page {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .categories-page {
+    padding: 14px;
+    
+    .content-wrapper {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .categories-page {
+    padding: 12px;
+    
+    .content-wrapper {
+      padding: 16px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .categories-page {
+    padding: 10px;
+    
+    .content-wrapper {
+      padding: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-page {
+    padding: 8px;
+    
+    .content-wrapper {
+      padding: 12px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .categories-page {
+    padding: 6px;
+    
+    .content-wrapper {
+      padding: 10px;
+    }
+  }
+}

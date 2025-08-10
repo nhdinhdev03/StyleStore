@@ -1,0 +1,78 @@
+.back-to-top {
+  position: fixed;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  background: #ff4400;
+  border: none;
+  padding: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  // Base mobile styles (small devices)
+  width: 32px;
+  height: 32px;
+  bottom: 70px;
+  right: 15px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.inactive {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // Small devices (phones)
+  @media screen and (max-width: 576px) {
+    width: 28px;
+    height: 28px;
+    bottom: 65px;
+    right: 12px;
+    font-size: 14px;
+    transition: none; // Remove transitions on mobile for better performance
+  }
+
+  // Hide on small screens
+  @media screen and (max-width: 375px) {
+    display: none !important;
+  }
+
+  // Medium devices (tablets)
+  @media screen and (min-width: 577px) and (max-width: 991px) {
+    width: 35px;
+    height: 35px;
+    bottom: 80px;
+    right: 20px;
+    font-size: 16px;
+  }
+
+  // Large devices (desktops)
+  @media screen and (min-width: 992px) {
+    width: 40px;
+    height: 40px;
+    bottom: 100px;
+    right: 25px;
+    font-size: 18px;
+
+    &:hover {
+      background: #e63e00;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Active state for touch devices
+  @media (hover: none) {
+    &:active {
+      background: #e63e00;
+    }
+  }
+}

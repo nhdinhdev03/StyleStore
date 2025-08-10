@@ -1,0 +1,336 @@
+// Biến SCSS với cải tiến
+$primary-color: #1890ff;
+$secondary-color: #52c41a; // Thêm màu phụ để làm nổi bật
+$text-color: #333;
+$background-color: #f9f9f9;
+$border-radius: 12px; // Tăng bo góc cho giao diện hiện đại
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$font-family: "Roboto", sans-serif;
+$shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08); // Bóng đổ nhẹ hơn, tinh tế hơn
+$shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12); // Bóng đổ khi hover
+
+// Container chính
+.user-profile-container {
+  padding: $spacing-lg;
+  font-family: $font-family;
+  background: linear-gradient(180deg, $background-color 0%, #fff 100%); // Gradient nhẹ
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+// Header với thiết kế hiện đại
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+  }
+}
+
+// Avatar với hiệu ứng tương tác
+.avatar-container {
+  position: relative;
+  transition: transform 0.25s ease;
+
+  .ant-avatar {
+    border: 2px solid $primary-color; // Viền nhẹ để nổi bật
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.camera-button {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: $spacing-sm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+// Thông tin người dùng
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  h2 {
+    margin: 0;
+    font-size: 1.75rem; // Tăng kích thước chữ cho chuyên nghiệp
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: lighten($text-color, 30%);
+  }
+
+  .ant-btn {
+    align-self: flex-start;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+    transition: all 0.2s ease;
+
+    &.ant-btn-primary {
+      background: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba($primary-color, 0.3);
+    }
+  }
+}
+
+// Navigation với hiệu ứng mượt mà
+.profile-navigation {
+  display: flex;
+  gap: $spacing-sm;
+  width: 100%;
+  background: $background-color;
+  padding: $spacing-sm;
+  border-radius: $border-radius;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  button {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    background: transparent;
+    color: $text-color;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: $border-radius;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &.active {
+      background: $primary-color;
+      color: white;
+      box-shadow: 0 2px 6px rgba($primary-color, 0.3);
+    }
+
+    &:hover:not(.active) {
+      background: lighten($primary-color, 45%);
+      color: $primary-color;
+    }
+
+    // Ripple effect khi click
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    &:active::after {
+      width: 200%;
+      height: 200%;
+    }
+  }
+}
+
+// Card với thiết kế tối giản
+.profile-card {
+  margin-top: $spacing-md;
+  padding: $spacing-lg;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-hover;
+  }
+
+  .ant-card-head {
+    border-bottom: none;
+    padding: 0 0 $spacing-md;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+}
+
+// Form item cải tiến
+.ant-form-item {
+  margin-bottom: $spacing-lg;
+
+  .ant-form-item-label > label {
+    font-weight: 500;
+    color: $text-color;
+  }
+
+  .ant-input,
+  .ant-picker,
+  .ant-radio-group {
+    border-radius: $border-radius;
+    transition: border-color 0.2s ease;
+  }
+
+  input[readonly],
+  .ant-picker-disabled {
+    background: #f5f5f5;
+    border-color: #e8e8e8;
+    color: lighten($text-color, 40%);
+    cursor: not-allowed;
+  }
+}
+
+// Modal đổi mật khẩu
+.password-modal {
+  .ant-modal-content {
+    border-radius: $border-radius;
+    padding: $spacing-md;
+    box-shadow: $shadow-light;
+  }
+
+  .ant-modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .ant-form-item {
+    margin-bottom: $spacing-md;
+  }
+
+  .ant-btn {
+    width: 100%;
+    margin-top: $spacing-sm;
+    border-radius: $border-radius;
+
+    &.ant-btn-primary {
+      background: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Responsive tối ưu
+@media (max-width: 1024px) {
+  .user-profile-container {
+    padding: $spacing-md;
+  }
+
+  .profile-header {
+    padding: $spacing-md;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-info {
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-card {
+    padding: $spacing-md;
+  }
+}
+
+@media (max-width: 425px) {
+  .user-profile-container {
+    padding: $spacing-sm;
+  }
+
+  .avatar-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-info {
+    h2 {
+      font-size: 1.25rem;
+    }
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  .profile-navigation button {
+    padding: $spacing-sm;
+    font-size: 0.875rem;
+  }
+
+  .profile-card {
+    padding: $spacing-sm;
+  }
+}
+
+// Tối ưu hiệu suất animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-card,
+.profile-navigation button {
+  animation: fadeIn 0.3s ease-out;
+}
+
+// Tối ưu cho thiết bị cảm ứng
+@media (pointer: coarse) {
+  .profile-navigation button,
+  .ant-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}

@@ -1,0 +1,164 @@
+// Breakpoints
+$breakpoint-4k: 2560px;
+$breakpoint-laptop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile-l: 425px;
+$breakpoint-mobile-m: 375px;
+
+// Font sizes
+$font-xs: 12px;
+$font-sm: 13px;
+$font-base: 14px;
+$font-md: 16px;
+$font-lg: 18px;
+$font-xl: 20px;
+$font-xxl: 24px;
+
+// Responsive mixins
+@mixin responsive($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Typography mixins
+@mixin heading-xl {
+  font-size: $font-xxl;
+  font-weight: 700;
+  
+  @include responsive($breakpoint-laptop) {
+    font-size: $font-xl;
+  }
+  
+  @include responsive($breakpoint-tablet) {
+    font-size: $font-lg;
+  }
+  
+  @include responsive($breakpoint-mobile-l) {
+    font-size: $font-md;
+  }
+}
+
+@mixin heading-md {
+  font-size: $font-lg;
+  font-weight: 600;
+  
+  @include responsive($breakpoint-tablet) {
+    font-size: $font-md;
+  }
+  
+  @include responsive($breakpoint-mobile-l) {
+    font-size: $font-base;
+  }
+}
+
+// Component styles
+.size-page {
+  padding: 24px;
+  
+  .content-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+
+  .header-actions {
+    margin-bottom: 24px;
+
+    .search-input {
+      width: 100%;
+    }
+
+    .add-btn {
+      width: 100%;
+    }
+  }
+
+  .table-container {
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .content-wrapper {
+      padding: 16px;
+    }
+
+    .page-title {
+      font-size: 20px;
+    }
+  }
+}
+
+/* Specific Responsive Breakpoints */
+@media (max-width: 1600px) {
+  .size-page {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .size-page {
+    padding: 14px;
+    
+    .content-wrapper {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .size-page {
+    padding: 12px;
+    
+    .content-wrapper {
+      padding: 16px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .size-page {
+    padding: 10px;
+    
+    .content-wrapper {
+      padding: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .size-page {
+    padding: 8px;
+    
+    .content-wrapper {
+      padding: 12px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .size-page {
+    padding: 6px;
+    
+    .content-wrapper {
+      padding: 10px;
+    }
+  }
+}
